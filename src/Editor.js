@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { UnControlled as CodeMirror } from "react-codemirror2";
+import React, { useEffect, useState } from "react";
+import { Controlled as CodeMirror } from "react-codemirror2";
 
 const Editor = (props) => {
   const [options, setOptions] = useState({
@@ -8,13 +8,19 @@ const Editor = (props) => {
     lineNumbers: true,
   });
 
+  const [val, setVal] = useState(props.value);
+
+  useEffect(() => {
+    props.onChangeHandler(val);
+  }, [props, val]);
+
   return (
     <div
       style={{
-        width: "98%",
-        height: "50vh",
-        // margin: "0.1rem",
+        width: "100%",
         border: "1px solid gray",
+        margin: "0px 0px 10px 0px",
+        overflowWrap: "break-word",
       }}
     >
       <div
@@ -27,6 +33,7 @@ const Editor = (props) => {
         }}
       >
         <select
+          className="select theme"
           value={options.theme}
           onChange={(v) => {
             setOptions({ ...options, theme: v.target.value });
@@ -35,7 +42,8 @@ const Editor = (props) => {
           <option value="light">Light</option>
           <option value="material">Dark</option>
         </select>
-        <select
+        {/* <select
+          className="select mode"
           value={options.mode}
           onChange={(v) => {
             setOptions({ ...options, mode: v.target.value });
@@ -44,15 +52,21 @@ const Editor = (props) => {
           <option value="html">html</option>
           <option value="css">css</option>
           <option value="javascript">js</option>
-        </select>
+        </select> */}
+        <span className="type">{props.type}</span>
+        <button
+          className="select btn"
+          onClick={() => setVal(props.beautify(val))}
+        >
+          Beautify
+        </button>
       </div>
       <CodeMirror
-        value={props.value}
+        value={val}
         options={options}
-        onChange={(editor, data, value) => {
-          props.onChangeHandler(props.beautify(value));
+        onBeforeChange={(editor, data, value) => {
+          setVal(value);
         }}
-        style={{ height: "100%" }}
       />
     </div>
   );

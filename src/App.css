@@ -1,19 +1,91 @@
-.CodeMirror {
-  height: 45vh !important;
+body {
+  overflow-x: hidden;
 }
+
+iframe {
+  border: 0;
+}
+
+.CodeMirror {
+  height: 44vh !important;
+}
+
+
 
 .header {
   text-align: center;
   padding: 1rem;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   letter-spacing: 5px;
+  background-color: black;
 }
 
+
 .code {
-  color: aqua
+  color: #007bff
 }
 
 .ide {
-  color: blue;
+  font-style: italic;
+  color: rgb(225, 255, 255);
+}
+
+@media screen and (max-width:576px) {
+
+  .editor-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}
+
+
+
+.select {
+  padding: 0.25rem;
+  text-align: center;
+}
+
+.type {
+  /* background-color: #007bff; */
+  color: gray;
+  text-transform: uppercase;
+  /* border: 0.25px solid #f1f1f1; */
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: #007bff;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.links {
+  padding: 0.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+.links i {
+  margin: 0 0.5rem;
+  font-size: larger;
+  color: #007bff;
+}
+
+.developer {
+  padding: 0rem 1rem;
+  text-align: right;
+  width: 100%;
+}
+
+.name {
+  padding-right: 10px;
 }
