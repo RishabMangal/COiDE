@@ -51,10 +51,10 @@ iframe {
 }
 
 .type {
-  /* background-color: #007bff; */
+
   color: gray;
   text-transform: uppercase;
-  /* border: 0.25px solid #f1f1f1; */
+
   padding: 0.5rem;
   border-radius: 5px;
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 
 const Editor = (props) => {
+  // let thisRef = null;
   const [options, setOptions] = useState({
     mode: props.type,
     theme: "material",
@@ -16,6 +17,9 @@ const Editor = (props) => {
 
   return (
     <div
+      // ref={(ref) => {
+      //   thisRef = ref;
+      // }}
       style={{
         width: "100%",
         border: "1px solid gray",
@@ -27,8 +31,8 @@ const Editor = (props) => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-evenly",
-          padding: "0.5rem",
+          justifyContent: "space-between",
+          padding: "0.5rem 1rem",
           background: "black",
         }}
       >
@@ -54,12 +58,33 @@ const Editor = (props) => {
           <option value="javascript">js</option>
         </select> */}
         <span className="type">{props.type}</span>
+        {/* <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "20%",
+          }}
+        > */}
         <button
           className="select btn"
           onClick={() => setVal(props.beautify(val))}
         >
           Beautify
         </button>
+        {/* <button
+            className="select btn"
+            onClick={() => {
+              props.setShowModal({
+                isVisible: true,
+                type: props.type,
+                ref: thisRef,
+              });
+              console.log("ref: ", thisRef);
+            }}
+          >
+            L
+          </button> */}
+        {/* </div> */}
       </div>
       <CodeMirror
         value={val}
